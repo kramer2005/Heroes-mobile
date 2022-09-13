@@ -19,6 +19,16 @@
         <entry key="..\:/Heroes/app/src/main/res/layout/fragment_heroes_list_list.xml" value="0.3484375" />
         <entry key="..\:/Heroes/app/src/main/res/layout/fragment_heroes_search_item.xml" value="0.5" />
         <entry key="..\:/Heroes/app/src/main/res/layout/fragment_search.xml" value="0.5" />
+        <entry key="..\:/ufpr/android/TRABALHO/Heroes-mobile/app/src/main/res/layout/activity_cadastro.xml" value="0.3115942028985507" />
+        <entry key="..\:/ufpr/android/TRABALHO/Heroes-mobile/app/src/main/res/layout/activity_loading.xml" value="0.3555253623188406" />
+        <entry key="..\:/ufpr/android/TRABALHO/Heroes-mobile/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/ufpr/android/TRABALHO/Heroes-mobile/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/ufpr/android/TRABALHO/Heroes-mobile/app/src/main/res/layout/activity_registration2.xml" value="0.35260416666666666" />
+        <entry key="..\:/ufpr/android/TRABALHO/Heroes-mobile/app/src/main/res/layout/content_cadastro.xml" value="0.3115942028985507" />
+        <entry key="..\:/ufpr/android/TRABALHO/Heroes-mobile/app/src/main/res/layout/content_registration.xml" value="0.264" />
+        <entry key="..\:/ufpr/android/TRABALHO/Heroes-mobile/app/src/main/res/layout/fragment_hero_card.xml" value="0.3555253623188406" />
+        <entry key="..\:/ufpr/android/TRABALHO/Heroes-mobile/app/src/main/res/layout/fragment_hero_card_list.xml" value="0.3555253623188406" />
+        <entry key="..\:/ufpr/android/TRABALHO/Heroes-mobile/app/src/main/res/layout/fragment_search.xml" value="0.3115942028985507" />
       </map>
     </option>
   </component>
