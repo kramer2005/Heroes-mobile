@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Heroes/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1935" />
+        <entry key="..\:/Heroes/app/src/main/res/drawable/graduebt.xml" value="0.3625" />
+        <entry key="..\:/Heroes/app/src/main/res/drawable/ic_sharp_local_movies_24.xml" value="0.1935" />
+        <entry key="..\:/Heroes/app/src/main/res/drawable/ic_sharp_search_24.xml" value="0.1935" />
+        <entry key="..\:/Heroes/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.24217687074829933" />
+        <entry key="..\:/Heroes/app/src/main/res/layout-w936dp/activity_login.xml" value="0.1390625" />
+        <entry key="..\:/Heroes/app/src/main/res/layout/activity_loading.xml" value="0.2" />
+        <entry key="..\:/Heroes/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/Heroes/app/src/main/res/layout/activity_main.xml" value="0.26495726495726496" />
+        <entry key="..\:/Heroes/app/src/main/res/layout/fragment_fullscreen.xml" value="0.18541666666666667" />
+        <entry key="..\:/Heroes/app/src/main/res/layout/fragment_hero_card.xml" value="0.3625" />
+        <entry key="..\:/Heroes/app/src/main/res/layout/fragment_hero_card_list.xml" value="0.3484375" />
+        <entry key="..\:/Heroes/app/src/main/res/layout/fragment_heroes.xml" value="0.67" />
+        <entry key="..\:/Heroes/app/src/main/res/layout/fragment_heroes_list_list.xml" value="0.3484375" />
+        <entry key="..\:/Heroes/app/src/main/res/layout/fragment_heroes_search_item.xml" value="0.5" />
+        <entry key="..\:/Heroes/app/src/main/res/layout/fragment_search.xml" value="0.5" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

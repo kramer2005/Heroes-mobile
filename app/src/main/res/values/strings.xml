@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Heroes</string>
+    <string name="search">Pesquisar</string>
+    <string name="mail">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Entrar</string>
+    <string name="register">Cadastrar</string>
+    <string name="isUserLoggedIn">isUserLoggedIn</string>
+    <string name="userToken">userToken</string>
+</resources>
