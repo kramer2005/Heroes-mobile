@@ -6,18 +6,18 @@ public class Hero {
     public int id;
     public String name;
     public String description;
-    public String movie;
-    public String image;
     public int views;
+    public String image;
+    public String movie;
 
-    public List<String> powers;
+    public List<String> abilities;
 
-    public Hero(int id, String name, String description, String movie, List<String> powers) {
+    public Hero(int id, String name, String description, String movie, List<String> abilities) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.movie = movie;
-        this.powers = powers;
+        this.abilities = abilities;
     }
 
     public Hero() {
