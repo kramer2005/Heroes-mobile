@@ -54,7 +54,8 @@ public class Public {
                 API_URL + "/public/register",
                 input,
                 response -> {
-                    AuthAnswer authAnswer = gson.fromJson(gson.toJson(response), AuthAnswer.class);
+                    JsonElement mJson = JsonParser.parseString(response.toString());
+                    AuthAnswer authAnswer = gson.fromJson(mJson, AuthAnswer.class);
                     CredentialsManager.setUserToken(activity, authAnswer.response);
                     Toast.makeText(ctx, "Usuário registrado com sucesso!", Toast.LENGTH_SHORT).show();
                     activity.successFullLogin();

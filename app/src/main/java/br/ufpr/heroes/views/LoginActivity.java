@@ -1,5 +1,8 @@
 package br.ufpr.heroes.views;
 
+import static br.ufpr.heroes.api.RequestClient.API_URL;
+import static br.ufpr.heroes.api.RequestClient.COOKIE_NAME;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,9 +13,13 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 
+import java.net.HttpCookie;
+import java.net.URI;
+
 import br.ufpr.heroes.R;
 import br.ufpr.heroes.api.CredentialsManager;
 import br.ufpr.heroes.api.Public;
+import br.ufpr.heroes.api.RequestClient;
 import br.ufpr.heroes.models.User;
 
 public class LoginActivity extends AppCompatActivity {
@@ -26,6 +33,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         if(CredentialsManager.isLoggedIn(this)){
             successFullLogin();
+            RequestClient.setCookieStore();
+            HttpCookie cookie = new HttpCookie(COOKIE_NAME, CredentialsManager.getUserToken(this));
+            RequestClient.getCookieStore().add(URI.create(API_URL), cookie);
         }
 
         this.emailInput = findViewById(R.id.emailInput);
