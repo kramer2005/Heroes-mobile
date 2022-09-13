@@ -41,11 +41,11 @@ public class Hero {
     }
 
     public List<String> getPowers() {
-        return powers;
+        return abilities;
     }
 
     public void setPowers(List<String> poderes) {
-        this.powers = powers;
+        this.abilities = poderes;
     }
 
 }

@@ -2,12 +2,18 @@ package br.ufpr.heroes.fragments;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import br.ufpr.heroes.api.RequestClient;
 import br.ufpr.heroes.databinding.FragmentHeroCardBinding;
 import br.ufpr.heroes.models.Hero;
 
@@ -41,6 +47,7 @@ public class HeroCardRecyclerViewAdapter extends RecyclerView.Adapter<HeroCardRe
         holder.mItem = mValues.get(position);
         holder.heroName.setText(mValues.get(position).name);
         holder.movie.setText(mValues.get(position).movie);
+        new DownloadImageFromInternet((ImageView) holder.imageView).execute(RequestClient.API_URL + "/images/" + mValues.get(position).image);
     }
 
     @Override
@@ -64,6 +71,28 @@ public class HeroCardRecyclerViewAdapter extends RecyclerView.Adapter<HeroCardRe
         @Override
         public String toString() {
             return super.toString() + " '" + movie.getText() + "'";
+        }
+    }
+
+    private class DownloadImageFromInternet extends AsyncTask<String, Void, Bitmap> {
+        ImageView imageView;
+        public DownloadImageFromInternet(ImageView imageView) {
+            this.imageView=imageView;
+        }
+        protected Bitmap doInBackground(String... urls) {
+            String imageURL=urls[0];
+            Bitmap bimage=null;
+            try {
+                InputStream in=new java.net.URL(imageURL).openStream();
+                bimage= BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error Message", e.getMessage());
+                e.printStackTrace();
+            }
+            return bimage;
+        }
+        protected void onPostExecute(Bitmap result) {
+            imageView.setImageBitmap(result);
         }
     }
 }

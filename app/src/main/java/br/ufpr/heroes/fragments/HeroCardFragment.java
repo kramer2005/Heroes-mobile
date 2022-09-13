@@ -12,33 +12,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import br.ufpr.heroes.R;
+import br.ufpr.heroes.api.HeroesApi;
 import br.ufpr.heroes.models.Hero;
-import br.ufpr.heroes.models.HeroesList;
 
 /**
  * A fragment representing a list of Items.
  */
 public class HeroCardFragment extends Fragment {
 
-    // TODO: Customize parameter argument names
-    private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
-    private int mColumnCount = 1;
+    View view;
 
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
     public HeroCardFragment() {
     }
 
-    // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
     public static HeroCardFragment newInstance(int columnCount) {
         HeroCardFragment fragment = new HeroCardFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
         return fragment;
     }
@@ -46,30 +39,21 @@ public class HeroCardFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_hero_card_list, container, false);
-        Hero hero = new Hero(1, "VAmpira", "", "XMen-Evolution", null);
-        HeroesList.ITEMS.add(hero);
+        view = inflater.inflate(R.layout.fragment_hero_card_list, container, false);
 
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
+        HeroesApi.getHeroes((int status, List<Hero> items) -> {
+            if (view instanceof RecyclerView) {
+                Context context = view.getContext();
+                RecyclerView recyclerView = (RecyclerView) view;
+                recyclerView.setAdapter(new HeroCardRecyclerViewAdapter(items));
             }
-            recyclerView.setAdapter(new HeroCardRecyclerViewAdapter(HeroesList.ITEMS));
-        }
+        }, view.getContext(), null, null);
+
         return view;
     }
 }
