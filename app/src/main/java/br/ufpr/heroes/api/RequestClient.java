@@ -15,7 +15,7 @@ import java.net.CookieManager;
 import java.net.CookieStore;
 
 public class RequestClient {
-    public static final String API_URL = "http://192.168.0.51:3001";
+    public static final String API_URL = "http://hero.kramer.dev.br:3000";
     public static final String COOKIE_NAME = "heroes-api";
     private static RequestClient instance;
     private RequestQueue requestQueue;
