@@ -1,29 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".views.MainActivity" >
+    tools:context=".views.MainActivity">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/search_bar"
-        android:name="br.ufpr.heroes.fragments.SearchFragment"
-        android:layout_width="match_parent"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addHeroFab"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout="@layout/fragment_search" />
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        android:contentDescription="@string/addMutant"
+        android:focusable="true"
+        app:backgroundTint="@color/primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView3"
-            android:name="br.ufpr.heroes.fragments.HeroCardFragment"
-            android:layout_width="wrap_content"
+            android:id="@+id/search_bar"
+            android:name="br.ufpr.heroes.fragments.SearchFragment"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:layout="@layout/fragment_hero_card_list" />
-    </ScrollView>
+            tools:layout="@layout/fragment_search" />
 
-</LinearLayout>
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/mainScroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/main_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/top_abilities_text"
+                        style="@style/Theme.Heroes.Subtitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="16dp"
+                        android:text="@string/top_abilities" />
+
+                    <LinearLayout
+                        android:id="@+id/top_abilities"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/top_ability_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Button" />
+
+                        <Button
+                            android:id="@+id/top_ability_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="4dp"
+                            android:backgroundTint="@color/secondary"
+                            android:text="Button" />
+
+                        <Button
+                            android:id="@+id/top_ability_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/third"
+                            android:text="Button" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="8dp"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="4dp">
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            style="@style/Theme.Heroes.Subtitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/mutant_list" />
+
+                        <ImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:minWidth="32dp"
+                            android:minHeight="35dp"
+                            app:srcCompat="@drawable/ic_baseline_keyboard_arrow_up_24" />
+
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="100" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/heroesList"
+                    android:name="br.ufpr.heroes.fragments.HeroCardFragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:layout="@layout/fragment_hero_card_list" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

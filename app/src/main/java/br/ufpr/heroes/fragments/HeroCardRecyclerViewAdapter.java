@@ -2,35 +2,31 @@ package br.ufpr.heroes.fragments;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.graphics.drawable.Drawable;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
+import br.ufpr.heroes.api.RequestClient;
 import br.ufpr.heroes.databinding.FragmentHeroCardBinding;
 import br.ufpr.heroes.models.Hero;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.List;
-
 /**
  * {@link RecyclerView.Adapter} that can display a {@link Hero}.
- * TODO: Replace the implementation with code for your data type.
  */
 public class HeroCardRecyclerViewAdapter extends RecyclerView.Adapter<HeroCardRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Hero> mValues;
+    Context ctx;
 
-    public HeroCardRecyclerViewAdapter(List<Hero> items) {
-        mValues = items;
-    }
+    public HeroCardRecyclerViewAdapter() {}
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        ctx = parent.getContext();
 
         return new ViewHolder(FragmentHeroCardBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
 
@@ -38,14 +34,18 @@ public class HeroCardRecyclerViewAdapter extends RecyclerView.Adapter<HeroCardRe
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        holder.heroName.setText(mValues.get(position).name);
-        holder.movie.setText(mValues.get(position).movie);
+        holder.mItem = SearchFragment.heroes.get(position);
+        holder.heroName.setText(SearchFragment.heroes.get(position).name);
+        holder.movie.setText(SearchFragment.heroes.get(position).movie);
+        Glide.with(ctx)
+                .load(RequestClient.API_URL + "/images/" + SearchFragment.heroes.get(position).image)
+                .diskCacheStrategy(DiskCacheStrategy.DATA)
+                .into(holder.imageView);
     }
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return SearchFragment.heroes.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
