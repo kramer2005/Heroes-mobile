@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -14,8 +15,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -25,22 +28,32 @@ import br.ufpr.heroes.R;
 import br.ufpr.heroes.adapters.SpinnerAdapter;
 import br.ufpr.heroes.api.AbilitiesApi;
 import br.ufpr.heroes.api.CredentialsManager;
+import br.ufpr.heroes.api.DashApi;
 import br.ufpr.heroes.api.HeroesApi;
+import br.ufpr.heroes.models.Dash;
 import br.ufpr.heroes.models.Hero;
 import br.ufpr.heroes.utils.Debouncer;
 import br.ufpr.heroes.views.LoginActivity;
 import br.ufpr.heroes.views.MainActivity;
 
-public class SearchFragment extends Fragment implements Debouncer.Callback<Editable> {
+public class SearchFragment extends Fragment {
 
     public static List<Hero> heroes = new ArrayList<>();
 
-    ImageView exitBtn;
     public static HeroCardRecyclerViewAdapter adapter;
     public SearchFragment() {}
     private String search;
     private String actualAbility;
-    private final Debouncer<Editable> debouncer = new Debouncer<Editable>(500, this);
+    private final Debouncer<Editable> debouncer = new Debouncer<>(500, this::onEmit);
+    public List<String> abilities;
+    private LinearLayout mainContent;
+    private ImageView goBackButton, exitButton, searchButton;
+    int[] location = new int[2];
+    int[] listLocation = new int[2];
+
+    // Main Activity components
+    Spinner mSpinner;
+    NestedScrollView mainScroll;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,9 +70,23 @@ public class SearchFragment extends Fragment implements Debouncer.Callback<Edita
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         MainActivity activity = (MainActivity) getActivity();
-
+        mSpinner = view.findViewById(R.id.abilitySpinner);
         assert activity != null;
 
+        setupGoBackButton();
+        setupDashboard(activity);
+        setupSearch(view);
+        setupAbilitySelector(activity);
+        setupExitBtn();
+    }
+
+    private void setupGoBackButton() {
+        searchButton = requireActivity().findViewById(R.id.searchIcon);
+        goBackButton = requireActivity().findViewById(R.id.goBackSearch);
+        goBackButton.setOnClickListener((v) -> cancelSearch());
+    }
+
+    private void setupSearch(@NonNull View view) {
         EditText editText = view.findViewById(R.id.searchInput);
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -73,16 +100,52 @@ public class SearchFragment extends Fragment implements Debouncer.Callback<Edita
                 debouncer.consume(editable);
             }
         });
-        setupAbilitySelector(view, activity);
-        setupExitBtn();
+    }
+
+    private void setupDashboard(MainActivity activity) {
+        mainContent = activity.mainContent;
+        DashApi.getDash((int status, Dash dash) -> {
+            View.OnClickListener onClickListener = (View v) -> {
+                Button b = (Button)v;
+                mSpinner.setSelection(abilities.indexOf(b.getText().toString()));
+                setupSearch();
+            };
+            activity.topAbility1.setText(dash.topThreeAbilities.get(0));
+            activity.topAbility2.setText(dash.topThreeAbilities.get(1));
+            activity.topAbility3.setText(dash.topThreeAbilities.get(2));
+            activity.topAbility1.setOnClickListener(onClickListener);
+            activity.abilitiesLayout.setVisibility(View.VISIBLE);
+            activity.topAbility1.setOnClickListener(onClickListener);
+            activity.topAbility2.setOnClickListener(onClickListener);
+            activity.topAbility3.setOnClickListener(onClickListener);
+        }, activity.getApplicationContext());
     }
 
     private void searchHero() {
         HeroesApi.getHeroes((int status, List<Hero> heroes) -> updateHeroesList(heroes), getContext(), search, actualAbility);
     }
 
-    private void setupAbilitySelector(@NonNull View view, MainActivity activity) {
-        Spinner mSpinner = view.findViewById(R.id.abilitySpinner);
+    private void setupSearch() {
+        mSpinner.setVisibility(View.VISIBLE);
+        mainContent.setVisibility(View.GONE);
+        goBackButton.setVisibility(View.VISIBLE);
+        exitButton.setVisibility(View.GONE);
+        searchButton.setVisibility(View.GONE);
+    }
+
+    private void cancelSearch() {
+        mSpinner.setVisibility(View.GONE);
+        mainContent.setVisibility(View.VISIBLE);
+        search = null;
+        actualAbility = null;
+        exitButton.setVisibility(View.VISIBLE);
+        goBackButton.setVisibility(View.GONE);
+        searchButton.setVisibility(View.VISIBLE);
+        mainScroll.setScrollY(0);
+        searchHero();
+    }
+
+    private void setupAbilitySelector(MainActivity activity) {
         mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -95,18 +158,18 @@ public class SearchFragment extends Fragment implements Debouncer.Callback<Edita
         });
 
         assert activity != null;
+        mainScroll = activity.mainScroll;
         activity.mainScroll.getViewTreeObserver().addOnScrollChangedListener(() -> {
-            int[] location = new int[2];
-            int[] listLocation = new int[2];
-            activity.mainScroll.getLocationOnScreen(location);
+            mainScroll.getLocationOnScreen(location);
             activity.heroesList.getLocationOnScreen(listLocation);
             if(listLocation[1] <= location[1] + 72) {
-                mSpinner.setVisibility(View.VISIBLE);
+                setupSearch();
             }
         });
 
         AbilitiesApi.getAbilities((int status, List<String> list) -> {
             list.add(0, "Habilidade");
+            abilities = list;
             SpinnerAdapter mArrayAdapter = new SpinnerAdapter(requireContext(), R.layout.spinner_list, list);
             mArrayAdapter.setDropDownViewResource(R.layout.spinner_list);
             mSpinner.setAdapter(mArrayAdapter);
@@ -123,9 +186,9 @@ public class SearchFragment extends Fragment implements Debouncer.Callback<Edita
     }
 
     private void setupExitBtn() {
-        exitBtn = requireActivity().findViewById(R.id.logoutBtn);
+        exitButton = requireActivity().findViewById(R.id.logoutBtn);
 
-        exitBtn.setOnClickListener(view1 -> {
+        exitButton.setOnClickListener(view1 -> {
             CredentialsManager.logout(getActivity());
             Intent loginIntent = new Intent(getActivity(), LoginActivity.class);
             startActivity(loginIntent);
@@ -133,7 +196,6 @@ public class SearchFragment extends Fragment implements Debouncer.Callback<Edita
         });
     }
 
-    @Override
     public void onEmit(Editable key) {
         search = key.toString();
         searchHero();

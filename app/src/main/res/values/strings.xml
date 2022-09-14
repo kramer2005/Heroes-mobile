@@ -10,4 +10,7 @@
     <string name="addMutant">Adicionar mutante</string>
     <string name="ability">Habilidade</string>
     <string name="logout">Sair</string>
+    <string name="mutant_list">Lista de Mutantes</string>
+    <string name="top_abilities">Abilidades em alta</string>
+    <string name="go_back">Voltar</string>
 </resources>

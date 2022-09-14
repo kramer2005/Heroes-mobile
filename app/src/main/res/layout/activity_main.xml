@@ -48,12 +48,80 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView2"
+                <LinearLayout
+                    android:id="@+id/main_content"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:height="100dp"
-                    android:text="TextView" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/top_abilities_text"
+                        style="@style/Theme.Heroes.Subtitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="16dp"
+                        android:text="@string/top_abilities" />
+
+                    <LinearLayout
+                        android:id="@+id/top_abilities"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/top_ability_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Button" />
+
+                        <Button
+                            android:id="@+id/top_ability_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="4dp"
+                            android:backgroundTint="@color/secondary"
+                            android:text="Button" />
+
+                        <Button
+                            android:id="@+id/top_ability_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/third"
+                            android:text="Button" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="8dp"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="4dp">
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            style="@style/Theme.Heroes.Subtitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/mutant_list" />
+
+                        <ImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:minWidth="32dp"
+                            android:minHeight="35dp"
+                            app:srcCompat="@drawable/ic_baseline_keyboard_arrow_up_24" />
+
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="100" />
+                    </LinearLayout>
+                </LinearLayout>
 
                 <androidx.fragment.app.FragmentContainerView
                     android:id="@+id/heroesList"
