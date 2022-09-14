@@ -50,6 +50,9 @@ public class RequestClient {
 
     public static synchronized RequestClient getInstance(Context context) {
         if (instance == null) {
+            if(cookieStore == null) {
+                setCookieStore();
+            }
             instance = new RequestClient(context);
         }
         return instance;

@@ -7,4 +7,7 @@
     <string name="register">Cadastrar</string>
     <string name="isUserLoggedIn">isUserLoggedIn</string>
     <string name="userToken">userToken</string>
+    <string name="addMutant">Adicionar mutante</string>
+    <string name="ability">Habilidade</string>
+    <string name="logout">Sair</string>
 </resources>

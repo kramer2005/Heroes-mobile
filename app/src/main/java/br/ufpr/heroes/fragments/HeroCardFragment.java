@@ -48,9 +48,11 @@ public class HeroCardFragment extends Fragment {
 
         HeroesApi.getHeroes((int status, List<Hero> items) -> {
             if (view instanceof RecyclerView) {
-                Context context = view.getContext();
                 RecyclerView recyclerView = (RecyclerView) view;
-                recyclerView.setAdapter(new HeroCardRecyclerViewAdapter(items));
+                recyclerView.setAdapter(new HeroCardRecyclerViewAdapter());
+
+                SearchFragment.adapter = (HeroCardRecyclerViewAdapter) recyclerView.getAdapter();
+                SearchFragment.updateHeroesList(items);
             }
         }, view.getContext(), null, null);
 

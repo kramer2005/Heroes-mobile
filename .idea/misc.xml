@@ -3,8 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Heroes-mobile/app/src/main/res/layout/activity_registration.xml" value="0.18541666666666667" />
-        <entry key="..\:/Heroes-mobile/app/src/main/res/layout/content_registration.xml" value="0.18541666666666667" />
+        <entry key="..\:/Heroes-mobile/app/src/main/res/drawable/my_btn.xml" value="0.3625" />
+        <entry key="..\:/Heroes-mobile/app/src/main/res/drawable/spinner_background.xml" value="0.3625" />
+        <entry key="..\:/Heroes-mobile/app/src/main/res/drawable/spinner_background_unselected.xml" value="0.1565" />
+        <entry key="..\:/Heroes-mobile/app/src/main/res/layout/activity_login.xml" value="0.3625" />
+        <entry key="..\:/Heroes-mobile/app/src/main/res/layout/activity_main.xml" value="0.20367936925098554" />
+        <entry key="..\:/Heroes-mobile/app/src/main/res/layout/activity_registration.xml" value="0.4836692147324531" />
+        <entry key="..\:/Heroes-mobile/app/src/main/res/layout/content_registration.xml" value="1.0" />
+        <entry key="..\:/Heroes-mobile/app/src/main/res/layout/fragment_hero_card.xml" value="0.9" />
+        <entry key="..\:/Heroes-mobile/app/src/main/res/layout/fragment_hero_card_list.xml" value="0.18541666666666667" />
+        <entry key="..\:/Heroes-mobile/app/src/main/res/layout/fragment_search.xml" value="0.3625" />
+        <entry key="..\:/Heroes-mobile/app/src/main/res/layout/spinner_list.xml" value="0.3614583333333333" />
         <entry key="..\:/Heroes/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1935" />
         <entry key="..\:/Heroes/app/src/main/res/drawable/graduebt.xml" value="0.3625" />
         <entry key="..\:/Heroes/app/src/main/res/drawable/ic_sharp_local_movies_24.xml" value="0.1935" />

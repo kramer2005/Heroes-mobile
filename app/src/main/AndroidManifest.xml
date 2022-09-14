@@ -17,21 +17,18 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".registration"
-            android:exported="false" />
-        <activity
             android:name=".views.LoginActivity"
-            android:exported="true"
-            android:noHistory="true">
+            android:noHistory="true"/>
+        <activity
+            android:name=".views.LoadingActivity"
+            android:noHistory="true"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".views.LoadingActivity"
-            android:noHistory="true" />
         <activity
             android:name=".views.MainActivity"
             android:exported="true" />

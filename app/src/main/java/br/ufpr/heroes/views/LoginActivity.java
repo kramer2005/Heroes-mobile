@@ -33,7 +33,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         if(CredentialsManager.isLoggedIn(this)){
             successFullLogin();
-            RequestClient.setCookieStore();
+            if(RequestClient.getCookieStore() == null) {
+                RequestClient.setCookieStore();
+            }
             HttpCookie cookie = new HttpCookie(COOKIE_NAME, CredentialsManager.getUserToken(this));
             RequestClient.getCookieStore().add(URI.create(API_URL), cookie);
         }

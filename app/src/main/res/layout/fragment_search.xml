@@ -4,40 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="8dp"
     tools:context=".fragments.SearchFragment">
 
-    <ImageView
-        android:id="@+id/searchIcon"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:contentDescription="@string/search"
-        android:minHeight="48dp"
-        android:padding="8dp"
-        android:src="@drawable/ic_sharp_search_24" />
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/searchInput"
-        style="@style/Theme.Heroes.EditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="100"
-        android:background="@android:color/transparent"
-        android:ems="10"
-        android:hint="@string/search"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:padding="8dp"
-        android:textColorHint="#FFFFFF" />
+        <ImageView
+            android:id="@+id/searchIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/search"
+            android:minHeight="48dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_sharp_search_24" />
 
-    <ImageView
-        android:id="@+id/logoutBtn"
-        android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/searchInput"
+            style="@style/Theme.Heroes.EditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="100"
+            android:autofillHints=""
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:hint="@string/search"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:padding="8dp"
+            android:textColorHint="#FFFFFF"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+
+        <ImageView
+            android:id="@+id/logoutBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/logout"
+            android:minHeight="48dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_baseline_exit_to_app_24" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:minHeight="48dp"
-        android:padding="8dp"
-        android:src="@drawable/ic_baseline_exit_to_app_24" />
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/abilitySpinner"
+            android:layout_width="fill_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/spinner_background"
+            android:contentDescription="@string/ability"
+            android:minHeight="48dp"
+            android:padding="2dp"
+            android:spinnerMode="dropdown"
+            android:visibility="gone" />
+
+    </LinearLayout>
 
 </LinearLayout>
