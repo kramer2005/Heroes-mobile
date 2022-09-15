@@ -1,16 +1,25 @@
 <resources>
-    <string name="app_name">Heroes</string>
+    <string name="app_name">WS Mutantes</string>
     <string name="search">Pesquisar</string>
     <string name="mail">Email</string>
-    <string name="password">Password</string>
+    <string name="password">Senha</string>
     <string name="login">Entrar</string>
     <string name="register">Cadastrar</string>
     <string name="isUserLoggedIn">isUserLoggedIn</string>
     <string name="userToken">userToken</string>
+    <string name="userId">userId</string>
     <string name="addMutant">Adicionar mutante</string>
     <string name="ability">Habilidade</string>
-    <string name="logout">Sair</string>
     <string name="mutant_list">Lista de Mutantes</string>
     <string name="top_abilities">Abilidades em alta</string>
     <string name="go_back">Voltar</string>
+    <string name="history">História</string>
+    <string name="abilities">Habilidades</string>
+    <string name="failed_login_message">Usuário ou senha incorretos</string>
+    <string name="failed_login_title">Falha ao logar</string>
+    <string name="failed_register_message">Usuário já existe</string>
+    <string name="failed_register_title">Falha ao cadastrar</string>
+    <string name="choose_message">Gostaria de deslogar ou fechar o aplicativo?</string>
+    <string name="logout">Deslogar</string>
+    <string name="close">Fechar</string>
 </resources>

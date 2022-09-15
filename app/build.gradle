@@ -6,7 +6,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "br.ufpr.heroes"
+        applicationId "br.ufpr.ws_mutantes"
         minSdk 22
         targetSdk 32
         versionCode 1
@@ -32,6 +32,15 @@ android {
 
 dependencies {
 
+    def camerax_version = "1.1.0-beta01"
+    implementation "androidx.camera:camera-core:${camerax_version}"
+    implementation "androidx.camera:camera-camera2:${camerax_version}"
+    implementation "androidx.camera:camera-lifecycle:${camerax_version}"
+    implementation "androidx.camera:camera-video:${camerax_version}"
+
+    implementation "androidx.camera:camera-view:${camerax_version}"
+    implementation "androidx.camera:camera-extensions:${camerax_version}"
+
     implementation 'androidx.appcompat:appcompat:1.5.0'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -40,6 +49,7 @@ dependencies {
     implementation 'com.android.volley:volley:1.2.1'
     implementation 'com.google.code.gson:gson:2.9.1'
     implementation 'com.github.bumptech.glide:glide:4.13.2'
+    implementation group: 'org.apmem.tools', name: 'layouts', version: '1.10'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

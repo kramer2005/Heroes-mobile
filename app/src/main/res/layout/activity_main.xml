@@ -7,20 +7,6 @@
     android:orientation="vertical"
     tools:context=".views.MainActivity">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addHeroFab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:clickable="true"
-        android:contentDescription="@string/addMutant"
-        android:focusable="true"
-        app:backgroundTint="@color/primary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add" />
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
@@ -33,7 +19,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/search_bar"
-            android:name="br.ufpr.heroes.fragments.SearchFragment"
+            android:name="br.ufpr.ws_mutantes.fragments.SearchFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout="@layout/fragment_search" />
@@ -55,6 +41,14 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/registered_heroes"
+                        style="@style/Theme.Heroes.Subtitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="16dp"
+                        android:text="Mutantes Cadastrados: " />
+
+                    <TextView
                         android:id="@+id/top_abilities_text"
                         style="@style/Theme.Heroes.Subtitle"
                         android:layout_width="match_parent"
@@ -62,42 +56,47 @@
                         android:paddingLeft="16dp"
                         android:text="@string/top_abilities" />
 
-                    <LinearLayout
-                        android:id="@+id/top_abilities"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
+                    <org.apmem.tools.layouts.FlowLayout
+                        android:id="@+id/mutant_abilities"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
                         android:visibility="gone">
 
                         <Button
-                            android:id="@+id/top_ability_1"
-                            android:layout_width="match_parent"
+                            android:id="@+id/ability_1"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Button" />
+                            android:layout_margin="4dp"
+                            android:background="@drawable/ability_background"
+                            android:text="Button"
+                            app:backgroundTint="@color/primary" />
 
                         <Button
-                            android:id="@+id/top_ability_2"
-                            android:layout_width="match_parent"
+                            android:id="@+id/ability_2"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="4dp"
-                            android:backgroundTint="@color/secondary"
-                            android:text="Button" />
+                            android:layout_margin="4dp"
+                            android:background="@drawable/ability_background"
+                            android:text="Button"
+                            app:backgroundTint="@color/secondary" />
 
                         <Button
-                            android:id="@+id/top_ability_3"
-                            android:layout_width="match_parent"
+                            android:id="@+id/ability_3"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="@color/third"
-                            android:text="Button" />
-                    </LinearLayout>
+                            android:layout_margin="4dp"
+                            android:background="@drawable/ability_background"
+                            android:text="Button"
+                            app:backgroundTint="@color/third" />
+                    </org.apmem.tools.layouts.FlowLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:paddingLeft="16dp"
                         android:paddingTop="8dp"
-                        android:gravity="center_vertical"
                         android:paddingBottom="4dp">
 
                         <TextView
@@ -125,7 +124,7 @@
 
                 <androidx.fragment.app.FragmentContainerView
                     android:id="@+id/heroesList"
-                    android:name="br.ufpr.heroes.fragments.HeroCardFragment"
+                    android:name="br.ufpr.ws_mutantes.fragments.HeroCardFragment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:layout="@layout/fragment_hero_card_list" />
@@ -135,5 +134,20 @@
         </androidx.core.widget.NestedScrollView>
 
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addHeroFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        android:contentDescription="@string/addMutant"
+        android:focusable="true"
+        android:onClick="createHero"
+        app:backgroundTint="@color/primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

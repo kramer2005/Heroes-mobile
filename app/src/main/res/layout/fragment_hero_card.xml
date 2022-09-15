@@ -21,18 +21,17 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/cardHeroImage"
+                android:id="@+id/mutantImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="false"
                 android:cropToPadding="false"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ic_launcher_background" />
+                android:scaleType="centerCrop" />
 
         </FrameLayout>
 
         <TextView
-            android:id="@+id/searchCardMovie"
+            android:id="@+id/mutantMovie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -41,12 +40,12 @@
             app:layout_constraintStart_toEndOf="@+id/imageView2" />
 
         <TextView
-            android:id="@+id/searchCardHeroName"
+            android:id="@+id/mutantName"
             style="@style/Theme.Heroes.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Vampira"
-            app:layout_constraintBottom_toTopOf="@+id/searchCardMovie"
+            app:layout_constraintBottom_toTopOf="@+id/mutantMovie"
             app:layout_constraintStart_toStartOf="@+id/imageView2" />
 
         <ImageView

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.HeroFormActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/goBack"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+                <FrameLayout
+                    android:id="@+id/frameLayout"
+                    android:layout_width="411dp"
+                    android:layout_height="240dp"
+                    android:background="@drawable/graduebt"
+                    android:foreground="@drawable/graduebt"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/mutantImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="false"
+                        android:cropToPadding="false"
+                        android:minWidth="32dp"
+                        android:scaleType="centerCrop" />
+
+                </FrameLayout>
+
+                <EditText
+                    android:id="@+id/mutantMovie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@null"
+                    android:hint="Primeira aparição"
+                    android:text="Filme"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2" />
+
+                <EditText
+                    android:id="@+id/mutantName"
+                    style="@style/Theme.Heroes.Subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="Nome do mutante"
+                    android:text="Mutante"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="@color/white"
+                    app:layout_constraintBottom_toTopOf="@+id/mutantMovie"
+                    app:layout_constraintStart_toStartOf="@+id/imageView2" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@drawable/ic_sharp_local_movies_24" />
+
+                <ImageView
+                    android:id="@+id/takePicture"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:onClick="dispatchTakePictureIntent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_add_a_photo_24" />
+
+                <ImageView
+                    android:id="@+id/useGallery"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:onClick="dispatchOpenGalleryIntent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/takePicture"
+                    app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    style="@style/Theme.Heroes.Subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/history" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/mutantHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="História do mutante"
+                android:inputType="textMultiLine"
+                android:paddingLeft="16dp"
+                android:text="História do mutante"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+
+            <TextView
+                android:id="@+id/textView4"
+                style="@style/Theme.Heroes.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:text="@string/abilities" />
+
+            <AutoCompleteTextView
+                android:id="@+id/abilitiesAutocomplete"
+                style="@style/Theme.Heroes.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:ems="10"
+                android:hint="Buscar habilidade"
+                android:inputType="textPersonName"
+                android:padding="16dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+
+            <org.apmem.tools.layouts.FlowLayout
+                android:id="@+id/mutant_abilities"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp">
+
+                <TextView
+                    android:id="@+id/ability_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/ability_background"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Habilidade N"
+                    android:visibility="gone"
+                    app:backgroundTint="@color/primary" />
+
+                <TextView
+                    android:id="@+id/ability_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/ability_background"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Habilidade N"
+                    android:visibility="gone"
+                    app:backgroundTint="@color/secondary" />
+
+                <TextView
+                    android:id="@+id/ability_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/ability_background"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Habilidade N"
+                    android:visibility="gone"
+                    app:backgroundTint="@color/third" />
+            </org.apmem.tools.layouts.FlowLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        android:onClick="saveMutant"
+        app:backgroundTint="@color/primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_save_24" />
+</androidx.constraintlayout.widget.ConstraintLayout>
