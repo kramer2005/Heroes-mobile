@@ -24,28 +24,4 @@ public class Hero {
 
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return name;
-    }
-
-    public void setNome(String nome) {
-        this.name = nome;
-    }
-
-    public List<String> getPowers() {
-        return abilities;
-    }
-
-    public void setPowers(List<String> poderes) {
-        this.abilities = poderes;
-    }
-
 }
